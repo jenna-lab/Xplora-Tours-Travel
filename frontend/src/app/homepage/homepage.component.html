@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<body class="bg-gray-100">
+
+  <div class="container mx-auto p-4">
+
+    <section  class="bg-cover bg-center relative h-96">
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <img src="../../assets/images/tours33.jpg" alt="" class="heroimage">
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold mb-4">Featured Destinations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="../../assets/images/msa1.jpg" alt="Destination 1" class="w-full h-40 object-cover mb-4 rounded-md">
+          <h3 class="text-xl font-bold mb-2">Destination 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="../../assets/images/msa2.jpg" alt="Destination 2" class="w-full h-40 object-cover mb-4 rounded-md">
+          <h3 class="text-xl font-bold mb-2">Destination 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="../../assets/images/msa3.jpg" alt="Destination 3" class="w-full h-40 object-cover mb-4 rounded-md">
+          <h3 class="text-xl font-bold mb-2">Destination 3</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold mb-4">Featured Tours</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="../../assets/images/mal1.jpg" alt="Tour 1" class="w-full h-40 object-cover mb-4 rounded-md">
+          <h3 class="text-xl font-bold mb-2">Tour 1</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="../../assets/images/mal2.jpg" alt="Tour 2" class="w-full h-40 object-cover mb-4 rounded-md">
+          <h3 class="text-xl font-bold mb-2">Tour 2</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+          <img src="../../assets/images/mal3.jpg" alt="Tour 3" class="w-full h-40 object-cover mb-4 rounded-md">
+          <h3 class="text-xl font-bold mb-2">Tour 3</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-blue-500 text-white text-center p-8 rounded-lg mt-8">
+      <h2 class="text-2xl font-bold mb-4">Ready to embark on your journey?</h2>
+      <p class="text-lg">Book your adventure now!</p>
+      <button class="bg-white text-blue-500 px-4 py-2 mt-4 rounded-md"><a [routerLink]="['/register']">Book Now</a></button>
+    </section>
+  </div>
+
+
+</body>
