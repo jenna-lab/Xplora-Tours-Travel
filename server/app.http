@@ -29,24 +29,25 @@ Content-Type: application/json
 
 ###
 
-GET  http://localhost:8000/user/check
+GET  http://localhost:9000/user/check
 # token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNhOGI2ZmM2LTgzOWUtNGQxYi1iODlmLTZhYjE0MTAwNDhkMCIsIm5hbWUiOiJ1c2VyNSIsImVtYWlsIjoidXNlcjVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOiIwIiwiaWF0IjoxNjk5NDUyODQ2LCJleHAiOjE2OTk0NTY0NDZ9.ZWSbRFh4_O6A8ytplaAXP29nvXiuJPiBfGK1zEF3V5k
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI1ZDM5YjE1LTUzYTgtNGJjNy1iNWJlLTc1M2QxYzVlMmQ2ZCIsIm5hbWUiOiJ1c2VyNiIsImVtYWlsIjoidXNlcjE2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwic3RhdHVzIjoiMCIsImlhdCI6MTY5OTc5OTQxMywiZXhwIjoxNjk5ODAzMDEzfQ.jb3HsN6zOpR4WVwbxEPYl1Mh-Dvu9Mq9-u7-t4kienw
 
 ###
-GET  http://localhost:8000/user/users
+GET  http://localhost:9000/user/users
 
 
 # projects
 ###
-POST http://localhost:8000/project/newproject
+POST http://localhost:9000/tour/newtour
 Content-Type: application/json
 
 {
-    "name":"projectcvccccvvHJ",
-    "description":"This is project HN",
-    "end_date": "Aug 12 2022",
-    "assigned_user_email":"user2@gmail.com"
+  "title": "Safari Adventure",
+  "description": "Experience the beauty of wildlife in an exciting safari adventure.",
+  "destination": "Kenya",
+  "price": 1500,
+  "imageUrl": "https://example.com/safari-image.jpg"
 }
 
 ###
@@ -65,7 +66,7 @@ GET http://localhost:8000/project/deleteProject/7367ae5b-fc02-4295-88d2-5c70169f
 
 
 ###
-GET  http://localhost:8000/project/projects
+GET  http://localhost:8000/tour/tours
 
 ###
 GET  http://localhost:8000/project/project/ghjhjkk@gmail.com

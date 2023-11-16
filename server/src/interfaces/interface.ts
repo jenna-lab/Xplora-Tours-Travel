@@ -13,11 +13,19 @@ export interface Data {
   exp: number;
 }
 
-export interface Project {
+export interface Tour {
   id: string;
-  name: string;
+  title: string;
   description: string;
-  end_date: string;
-  user_id: string;
-  email: string;
+  destination: string;
+  price: number;
+  imageUrl: string;
 }
+export interface TourWithoutId  extends Tour{
+  title: string;
+  description: string;
+  destination: string;
+  price: number;
+  imageUrl: string;
+}
+

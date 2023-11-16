@@ -47,13 +47,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
           console.log(result);
  
-    // await pool
-    //   .request()
-    //   .input("id", mssql.VarChar, id)
-    //   .input("name", mssql.VarChar, name)
-    //   .input("email", mssql.VarChar, email)
-    //   .input("password", mssql.VarChar, hashedpassword)
-    //   .execute("insertUser");
+
 
     res.json({ message: "Registered new user..." });
   } catch (error) {

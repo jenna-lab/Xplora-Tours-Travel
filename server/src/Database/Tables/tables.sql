@@ -3,7 +3,7 @@
 -- DROP TABLE UsersTable
 USE Project_management;
 
--- CREATE TABLE UsersTable( id VARCHAR(80), name VARCHAR(200),   email VARCHAR(200)  , password VARCHAR(200), role VARCHAR(200) DEFAULT 'user', status VARCHAR(80) DEFAULT 0)
+CREATE TABLE UsersTable( id VARCHAR(80), name VARCHAR(200),   email VARCHAR(200)  , password VARCHAR(200), role VARCHAR(200) DEFAULT 'user', status VARCHAR(80) DEFAULT 0)
 
 
 
