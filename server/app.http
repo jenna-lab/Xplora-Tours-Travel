@@ -1,0 +1,74 @@
+
+POST http://localhost:9000/user/signup
+Content-Type: application/json
+
+# {
+#     "email":"user16@gmail.com",
+#     "name":"user5",
+#     "password":"12345678"
+# }
+{
+    "email":"user16@gmail.com",
+    "name":"user6",
+    "password":"839302018"
+}
+
+
+###
+POST http://localhost:9000/user/login
+Content-Type: application/json
+
+# {
+#     "email":"user5@gmail.com",
+#     "password":"12345678"
+# }
+{
+    "email":"user16@gmail.com",
+    "password":"839302018"
+}
+
+###
+
+GET  http://localhost:8000/user/check
+# token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNhOGI2ZmM2LTgzOWUtNGQxYi1iODlmLTZhYjE0MTAwNDhkMCIsIm5hbWUiOiJ1c2VyNSIsImVtYWlsIjoidXNlcjVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOiIwIiwiaWF0IjoxNjk5NDUyODQ2LCJleHAiOjE2OTk0NTY0NDZ9.ZWSbRFh4_O6A8ytplaAXP29nvXiuJPiBfGK1zEF3V5k
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI1ZDM5YjE1LTUzYTgtNGJjNy1iNWJlLTc1M2QxYzVlMmQ2ZCIsIm5hbWUiOiJ1c2VyNiIsImVtYWlsIjoidXNlcjE2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwic3RhdHVzIjoiMCIsImlhdCI6MTY5OTc5OTQxMywiZXhwIjoxNjk5ODAzMDEzfQ.jb3HsN6zOpR4WVwbxEPYl1Mh-Dvu9Mq9-u7-t4kienw
+
+###
+GET  http://localhost:8000/user/users
+
+
+# projects
+###
+POST http://localhost:8000/project/newproject
+Content-Type: application/json
+
+{
+    "name":"projectcvccccvvHJ",
+    "description":"This is project HN",
+    "end_date": "Aug 12 2022",
+    "assigned_user_email":"user2@gmail.com"
+}
+
+###
+POST http://localhost:8000/project/assignNewProject
+Content-Type: application/json
+
+{   "name":"project 6",
+    "description":"gajaswjkurue",
+    "end_date": "Aug 12 2022",
+    "assigned_user_email":"user6@gmail.com"
+
+    }
+
+###
+GET http://localhost:8000/project/deleteProject/7367ae5b-fc02-4295-88d2-5c70169fc608
+
+
+###
+GET  http://localhost:8000/project/projects
+
+###
+GET  http://localhost:8000/project/project/ghjhjkk@gmail.com
+
+###
+Get http://localhost:8000/project/complete/54cac16d-c214-4c22-8121-77d451800310
