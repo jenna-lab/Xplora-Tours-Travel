@@ -29,6 +29,7 @@ export const addNewTour = async (req: Request, res: Response) => {
       price,
       imageUrl,
     } = req.body;
+console.log(req.body);
 
     const { error } = TourSchema.validate(req.body);
     if (error) {
@@ -96,19 +97,19 @@ export const addNewTour = async (req: Request, res: Response) => {
 //   }
 // };
 
-// export const getallTours = async (req: Request, res: Response) => {
-//   try {
-//     const pool = await mssql.connect(sqlConfig);
-//     const allprojects: Tours[] = await (
-//       await pool.request().execute("getalltours")
-//     ).recordset;
-//     console.log(alltours);
+export const getAllTours = async (req: Request, res: Response) => {
+  try {
+    const pool = await mssql.connect(sqlConfig);
+    const alltours: Tour[] = await (
+      await pool.request().execute("getalltours")
+    ).recordset;
+    console.log(alltours);
 
-//     res.json(alltours);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+    res.json(alltours);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // export const getTour = async (req: Request, res: Response) => {
 //   try {

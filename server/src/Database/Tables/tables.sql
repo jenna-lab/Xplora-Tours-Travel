@@ -62,11 +62,11 @@ CREATE TABLE UsersTable( id VARCHAR(80), name VARCHAR(200),   email VARCHAR(200)
 -- SELECT * FROM ProjectsTable WHERE assigned_user_email =@assigned_user_email
 -- END
 
--- CREATE PROCEDURE getAllProjects
--- AS
--- BEGIN
--- SELECT * FROM ProjectsTable
--- END
+CREATE PROCEDURE getAllProjects
+AS
+BEGIN
+SELECT * FROM ProjectsTable
+END
 
 -- USE Project_management;
 -- USE ProjectsTable;

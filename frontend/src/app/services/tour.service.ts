@@ -9,8 +9,7 @@ export class TourService {
 
   userUrl = 'http://localhost:9000/tour';
 
-
-  async addTour(tourData:Tour ) {
+  async addTour(tourData: Tour) {
     const response = await fetch(`${this.userUrl}/newTour`, {
       method: 'POST',
       headers: {
@@ -20,6 +19,15 @@ export class TourService {
     });
     // console.log(response);
 
+    return response.json();
+  }
+  async getAllTours() {
+    const response = await fetch(`${this.userUrl}/tours`, {
+      method: 'GET',
+      headers: {
+        // token: token,
+      },
+    });
     return response.json();
   }
 }
