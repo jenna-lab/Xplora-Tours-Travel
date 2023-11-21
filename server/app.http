@@ -2,11 +2,6 @@
 POST http://localhost:9000/user/signup
 Content-Type: application/json
 
-# {
-#     "email":"user16@gmail.com",
-#     "name":"user5",
-#     "password":"12345678"
-# }
 {
     "email":"user16@gmail.com",
     "name":"user6",
@@ -18,10 +13,6 @@ Content-Type: application/json
 POST http://localhost:9000/user/login
 Content-Type: application/json
 
-# {
-#     "email":"user5@gmail.com",
-#     "password":"12345678"
-# }
 {
     "email":"user16@gmail.com",
     "password":"839302018"
@@ -30,14 +21,13 @@ Content-Type: application/json
 ###
 
 GET  http://localhost:9000/user/check
-# token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNhOGI2ZmM2LTgzOWUtNGQxYi1iODlmLTZhYjE0MTAwNDhkMCIsIm5hbWUiOiJ1c2VyNSIsImVtYWlsIjoidXNlcjVAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJzdGF0dXMiOiIwIiwiaWF0IjoxNjk5NDUyODQ2LCJleHAiOjE2OTk0NTY0NDZ9.ZWSbRFh4_O6A8ytplaAXP29nvXiuJPiBfGK1zEF3V5k
 token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI1ZDM5YjE1LTUzYTgtNGJjNy1iNWJlLTc1M2QxYzVlMmQ2ZCIsIm5hbWUiOiJ1c2VyNiIsImVtYWlsIjoidXNlcjE2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwic3RhdHVzIjoiMCIsImlhdCI6MTY5OTc5OTQxMywiZXhwIjoxNjk5ODAzMDEzfQ.jb3HsN6zOpR4WVwbxEPYl1Mh-Dvu9Mq9-u7-t4kienw
 
 ###
 GET  http://localhost:9000/user/users
 
 
-# projects
+# TOURS
 ###
 POST http://localhost:9000/tour/newtour
 Content-Type: application/json
@@ -47,29 +37,82 @@ Content-Type: application/json
   "description": "Experience the beauty of wildlife in an exciting safari adventure.",
   "destination": "Kenya",
   "price": 1500,
-  "imageUrl": "https://example.com/safari-image.jpg"
+  "imageUrl": "https://example.com/safari-image.jpg",
+  "start_date": "2021-07-10",
+  "end_date": "2021-07-12"
 }
 
+
+
 ###
-POST http://localhost:8000/project/assignNewProject
+DELETE  http://localhost:9000/tour/deleteTour/60909a49-1d28-4bf5-a4a8-a34190c01274
+
+###
+PUT http://localhost:9000/tour/updateTour/80252158-a517-42b1-86d2-9fa21440e665
 Content-Type: application/json
 
-{   "name":"project 6",
-    "description":"gajaswjkurue",
-    "end_date": "Aug 12 2022",
-    "assigned_user_email":"user6@gmail.com"
-
-    }
-
-###
-GET http://localhost:8000/project/deleteProject/7367ae5b-fc02-4295-88d2-5c70169fc608
+{
+  "title": "Safari Adventure",
+  "description": "Experience the beauty of wildlife in an exciting safari adventure.",
+  "destination": "Kenya",
+  "price": 1500,
+  "imageUrl": "https://example.com/safari-image.jpg",
+  "start_date": "2021-07-10",
+  "end_date": "2021-07-12"
+}
 
 
 ###
 GET  http://localhost:9000/tour/tours
 
+
+# BOOKINGS
 ###
-GET  http://localhost:8000/project/project/ghjhjkk@gmail.com
+GET http://localhost:9000/booking
 
 ###
-Get http://localhost:8000/project/complete/54cac16d-c214-4c22-8121-77d451800310
+POST http://localhost:9000/booking/newbooking
+Content-Type: application/json
+
+  {
+  "booking_id": "54cac16d-c214-4c22-8121-77",
+  "tour_id": "3cae553a-62a0-40b3-b777-c051cc19cbbb",
+  "user_id": "f7613a00-069c-402a-978a-fbd5cc91db4d ",
+  "count": 2
+}
+
+###
+DELETE  http://localhost:9000/booking/deleteBooking/60909a49-1d28-4bf5-a4a8-a34190c01274
+
+###
+POST http://localhost:9000/booking/newBooking
+Content-Type: application/json
+
+{
+  "tour_id": "80252158-a517-42b1-86d2-9fa21440e6653",
+  "user_id": "b7b976bb-ce43-4913-b15e-f7004b8f183a",
+  "count": 1,
+  "total_price": 1500
+}
+
+###
+GET http://localhost:9000/booking/getBookings
+
+###
+PUT http://localhost:9000/booking/updateBooking
+
+{
+  "booking_id": "1",
+  "tour_id": "updated_tour_123",
+  "user_id": "updated_user_456"
+}
+GET http://localhost:9000/booking/getBooking/1
+
+###
+GET http://localhost:9000/booking/getUserBooking/
+
+###
+DELETE http://localhost:9000/booking/deleteBooking/
+
+
+

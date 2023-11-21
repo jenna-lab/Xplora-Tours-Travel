@@ -45,9 +45,9 @@
               <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full sm:px-6 lg:px-8">
                   <div class="overflow-hidden">
-                    <table class="min-w-full mb-0" >
+                    <table class="min-w-full mb-0">
                       <thead class="border-b rounded-t-lg text-left">
-                        <tr >
+                        <tr>
                           <th scope="col" class="rounded-tl-lg text-sm font-medium px-6 py-4">
                             TourName
                           </th>
@@ -63,27 +63,45 @@
                           <th scope="col" class="text-sm font-medium px-6 py-4">
                             Price
                           </th>
-                          <th scope="col" class="rounded-tr-lg text-sm font-medium px-6 py-4">image</th>
+                          <th scope="col" class="text-sm font-medium px-6 py-4">
+                            start
+                          </th>
+                          <th scope="col" class="text-sm font-medium px-6 py-4">
+                            End
+                          </th>
                         </tr>
                       </thead>
-                      <tbody >
-                        <tr *ngFor="let tour of tours" class="border-b bg-gray-100" >
+                      <tbody>
+                        <tr *ngFor="let tour of tours" class="border-b bg-gray-100">
                           <th class="text-sm font-medium px-6 py-4 whitespace-nowrap text-left" scope="row">
                             {{tour.title}}
                           </th>
                           <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                              <img [src]="tour.imageUrl" alt="">
+                            <img [src]="tour.imageUrl" alt="">
                           </td>
                           <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
-                          {{tour.destination}}
+                            {{tour.destination}}
+                          </td>
+                          <td class="text-sm font-normal px-6 py-4 whitespace-normal text-left text-gray-500">
+                            {{tour.description}}
                           </td>
                           <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
                             Ksh {{tour.price}}
                           </td>
-                          <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
-                            <a href="#!"
-                              class="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">Edit</a>
+                          <td class="text-sm font-normal px-6 py-4 whitespace-normal text-left text-gray-500">
+                            {{ tour.start_date | date:'shortDate' }}
                           </td>
+                          <td class="text-sm font-normal px-6 py-4 whitespace-normal text-left text-gray-500">
+                            {{ tour.end_date | date:'shortDate' }}
+                          </td>
+                          <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2"
+                              (click)="editTour(tour.tour_id)">Edit</button>
+
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4"
+                              (click)="deleteTour(tour.tour_id)">Delete</button>
+                          </td>
+
                         </tr>
                       </tbody>
                     </table>
@@ -111,15 +129,15 @@
               class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Title
             </label>
           </div>
-            <!--Destination textarea-->
-            <div class="relative mb-6" data-te-input-wrapper-init>
-              <textarea [(ngModel)]="tourData.destination" name="destination"
-                class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                id="exampleFormControlTextarea13" rows="3" placeholder="Destination"></textarea>
-              <label for="exampleFormControlTextarea13"
-                class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Destination
-              </label>
-            </div>
+          <!--Destination textarea-->
+          <div class="relative mb-6" data-te-input-wrapper-init>
+            <textarea [(ngModel)]="tourData.destination" name="destination"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+              id="exampleFormControlTextarea13" rows="3" placeholder="Destination"></textarea>
+            <label for="exampleFormControlTextarea13"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Destination
+            </label>
+          </div>
           <!--Description textarea-->
           <div class="relative mb-6" data-te-input-wrapper-init>
             <textarea [(ngModel)]="tourData.description" name="description"
@@ -149,12 +167,33 @@
               class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Price
             </label>
           </div>
+          <!-- Start Date input -->
+          <div class="relative mb-3" data-te-input-wrapper-init>
+            <input type="date" [(ngModel)]="tourData.start_date" name="startDate"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+              id="startDate" placeholder="Start Date" />
+            <label for="startDate"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">Start
+              Date
+            </label>
+          </div>
+
+          <!-- End Date input -->
+          <div class="relative mb-3" data-te-input-wrapper-init>
+            <input type="date" [(ngModel)]="tourData.end_date" name="endDate"
+              class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+              id="endDate" placeholder="End Date" />
+            <label for="endDate"
+              class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary">End
+              Date
+            </label>
+          </div>
 
           <!--Submit button-->
           <button type="submit"
             class="dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]] inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
             data-te-ripple-init data-te-ripple-color="light">
-            Send
+            create
           </button>
         </form>
       </div>
@@ -173,107 +212,35 @@
                     <table class="min-w-full mb-0">
                       <thead class="border-b bg-gray-50 rounded-t-lg text-left">
                         <tr>
-                          <th scope="col" class="rounded-tl-lg text-sm font-medium px-6 py-4">
+
+                          <th scope="col" class="text-sm font-medium px-6 py-4">
                             NAME
                           </th>
                           <th scope="col" class="text-sm font-medium px-6 py-4">
-                            TITLE
+                            EMAIL
                           </th>
 
-                          <th scope="col" class="text-sm font-medium px-6 py-4">
-                            ROLE
-                          </th>
                           <th scope="col" class="rounded-tr-lg text-sm font-medium px-6 py-4"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr class="border-b">
-                          <th scope="row" class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <div class="flex flex-row items-center">
-                              <img class="rounded-full w-12" src="https://mdbootstrap.com/img/new/avatars/9.jpg"
-                                alt="Avatar" />
-                              <div class="ml-4">
-                                <p class="mb-0.5 font-medium">Jane Cooper</p>
-                                <p class="mb-0.5 text-gray-500">
-                                  jane.cooper.example.com
-                                </p>
-                              </div>
-                            </div>
-                          </th>
-                          <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <div class="flex flex-col">
-                              <p class="mb-0.5">Regional Paradigm Technican</p>
-                              <p class="mb-0.5 text-gray-500">Optimization</p>
-                            </div>
+                        <tr class="border-b" *ngFor="let user of users">
+
+                          <td
+                            class="align-middle text-gray-500 text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
+                            {{ user.name}}
                           </td>
 
                           <td
                             class="align-middle text-gray-500 text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            Admin
+                            {{ user.email }}
                           </td>
                           <td class="align-middle text-right text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
                             <a href="#!"
-                              class="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">Edit</a>
+                              class="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">Suspend</a>
                           </td>
                         </tr>
-                        <tr class="border-b">
-                          <th scope="row" class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <div class="flex flex-row items-center">
-                              <img class="rounded-full w-12" src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-                                alt="Avatar" />
-                              <div class="ml-4">
-                                <p class="mb-0.5 font-medium">Cody Fisher</p>
-                                <p class="mb-0.5 text-gray-500">
-                                  cody.fisher.example.com
-                                </p>
-                              </div>
-                            </div>
-                          </th>
-                          <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <div class="flex flex-col">
-                              <p class="mb-0.5">Product Directives Officer</p>
-                              <p class="mb-0.5 text-gray-500">Intranet</p>
-                            </div>
-                          </td>
-
-                          <td
-                            class="align-middle text-gray-500 text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            Owner
-                          </td>
-                          <td class="align-middle text-right text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <a href="#!"
-                              class="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">Edit</a>
-                          </td>
-                        </tr>
-                        <tr class="border-b">
-                          <th scope="row" class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <div class="flex flex-row items-center">
-                              <img class="rounded-full w-12" src="https://mdbootstrap.com/img/new/avatars/11.jpg"
-                                alt="Avatar" />
-                              <div class="ml-4">
-                                <p class="mb-0.5 font-medium">Esther Howard</p>
-                                <p class="mb-0.5 text-gray-500">
-                                  esther.howard.example.com
-                                </p>
-                              </div>
-                            </div>
-                          </th>
-                          <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <div class="flex flex-col">
-                              <p class="mb-0.5">Forward Response Developer</p>
-                              <p class="mb-0.5 text-gray-500">Directives</p>
-                            </div>
-                          </td>
-
-                          <td
-                            class="align-middle text-gray-500 text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            Member
-                          </td>
-                          <td class="align-middle text-right text-sm font-normal px-6 py-4 whitespace-nowrap text-left">
-                            <a href="#!"
-                              class="font-medium text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 transition duration-300 ease-in-out">Edit</a>
-                          </td>
-                        </tr>
+                        <tr class="border-b"> </tr>
                       </tbody>
                     </table>
                   </div>

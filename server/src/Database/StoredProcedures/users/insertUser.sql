@@ -1,3 +1,9 @@
+
+ 
+DELETE FROM UsersTable;
+DROP PROCEDURE IF EXISTS insertUser;
+SELECT * FROM UsersTable;
+
 CREATE PROCEDURE insertUser(
     @id VARCHAR(100),
     @name VARCHAR(200),
@@ -18,8 +24,3 @@ BEGIN
     INSERT INTO UsersTable(id, name, email,  password, role)
     VALUES(@id, @name, @email, @password, @role)
 END;
- 
-DELETE FROM UsersTable;
-DROP PROCEDURE IF EXISTS insertUser;
-SELECT * FROM UsersTable;
-

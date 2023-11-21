@@ -12,7 +12,7 @@ export class RegisterComponent {
   userData: UserRegister = {
     email: '',
     password: '',
-    fullname: '',
+    name: '',
   };
   pwd: {
     confirmPassword: string;
@@ -22,7 +22,7 @@ export class RegisterComponent {
 
   constructor(private router: Router, private api: UserService) {}
   onSubmit() {
-    if (this.userData.fullname.trim() === '') {
+    if (this.userData.name.trim() === '') {
       alert('Name is required');
       return;
     }
@@ -40,7 +40,7 @@ export class RegisterComponent {
     }
 
     const userData = {
-      fullname: this.userData.fullname,
+      name: this.userData.name,
       email: this.userData.email,
       password: this.userData.password,
       role: 'admin',

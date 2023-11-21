@@ -47,8 +47,6 @@ export const registerUser = async (req: Request, res: Response) => {
 
           console.log(result);
  
-
-
     res.json({ message: "Registered new user..." });
   } catch (error) {
     console.log(error);
@@ -59,8 +57,8 @@ export const registerUser = async (req: Request, res: Response) => {
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password } = req.body;
-    console.log(req.body);
+    const { email, password } = req.body;
+    // console.log(req.body);
     
     const pool = await mssql.connect(sqlConfig);
     const { error, value } = UserSchema2.validate(req.body);
@@ -75,7 +73,7 @@ export const loginUser = async (req: Request, res: Response) => {
     const user: User[] = await (
       await pool
         .request()
-        .input("email", mssql.VarChar, email)
+      .input("email", mssql.VarChar(50), email)
         .execute("getUser")
     ).recordset;
 
@@ -105,10 +103,8 @@ export const loginUser = async (req: Request, res: Response) => {
   }
 };
 
-
-
 export const checkUser = async (req: Extended, res: Response) => {
-  console.log("HERE =>");
+  // console.log("HERE =>");
 
   if (req.info) {
     console.log(req.info);
@@ -117,6 +113,7 @@ export const checkUser = async (req: Extended, res: Response) => {
       name: req.info.name,
       role: req.info.role,
       email: req.info.email,
+      id: req.info.id,
     });
   }
 };
@@ -124,7 +121,7 @@ export const getallusers = async (req: Request, res: Response) => {
   try {
     const pool = await mssql.connect(sqlConfig);
     const allusers = await (
-      await pool.request().execute("getProjectUsers")
+      await pool.request().execute("getAllUsers")
     ).recordset;
     console.log(allusers);
     res.json(allusers);

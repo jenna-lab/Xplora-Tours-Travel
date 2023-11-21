@@ -16,6 +16,8 @@ export const TourSchema = Joi.object({
   destination: Joi.string().required(),
   price: Joi.number().required(),
   imageUrl: Joi.string().uri().required(),
+  start_date:Joi.string().required(),
+  end_date: Joi.string().required(),
 });
 
 export const UserSchema4 = Joi.object({
@@ -27,4 +29,30 @@ export const UserSchema5 = Joi.object({
 });
 export const UserSchema6 = Joi.object({
   project_id: Joi.string().required(),
+});
+
+export const validateBooking = Joi.object().keys({
+  // booking_id: Joi.string().min(8).required(),
+  tour_id: Joi.string().min(8).required(),
+  user_id: Joi.string().min(8).required(),
+  count: Joi.number().min(1).required(),
+  total_price: Joi.number().required(),
+});
+
+export const validateUpdateBooking = Joi.object().keys({
+  booking_id: Joi.string().min(8).required(),
+  tour_id: Joi.string().min(8).required(),
+  user_id: Joi.string().min(8).required(),
+  count: Joi.number().min(1).required(),
+  total_price: Joi.number().required(),
+  start_date: Joi.date().required(),
+  end_date: Joi.date().required(),
+});
+
+export const validateBookingId = Joi.object().keys({
+  booking_id: Joi.string().min(8).required(),
+});
+
+export const validateUserId = Joi.object().keys({
+  user_id: Joi.string().min(8).required(),
 });

@@ -11,6 +11,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ToursComponent } from './tours/tours.component';
 import { UsersComponent } from './users/users.component';
+import { EdittourmodalComponent } from './edittourmodal/edittourmodal.component';
+import { BookingsComponent } from './bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,10 @@ import { UsersComponent } from './users/users.component';
     HomepageComponent,
     ToursComponent,
     UsersComponent,
+    EdittourmodalComponent,
+    BookingsComponent,
   ],
-  imports: [BrowserModule,
-    AppRoutingModule,
-     FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

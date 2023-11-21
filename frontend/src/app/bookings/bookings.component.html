@@ -1,0 +1,63 @@
+
+<main class="p-2">
+
+  <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+    id="tabs-messages02" role="tabpanel" aria-labelledby="tabs-profile-tab01">
+    <div class="container my-12 py-12 mx-auto px-4 md:px-6 lg:px-12">
+      <section class="mb-20 text-gray-800">
+        <div class="block rounded-lg shadow-lg bg-white">
+          <div class="flex flex-col">
+            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
+                  <table class="min-w-full mb-0">
+                    <thead class="border-b rounded-t-lg text-left">
+                      <tr>
+                        <th scope="col" class="rounded-tl-lg text-sm font-medium px-6 py-4">
+                          Tour Name
+                        </th>
+                        <th scope="col" class="text-sm font-medium px-6 py-4">
+                          Head Count
+                        </th>
+                        <th scope="col" class="text-sm font-medium px-6 py-4">
+                          Duration
+                        </th>
+                        <th scope="col" class="text-sm font-medium px-6 py-4">
+                          Total Price
+                        </th>
+                        <th scope="col" class="rounded-tr-lg text-sm font-medium px-6 py-4"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Loop through booked tours and display details -->
+                      <tr *ngFor="let booking of bookings; let i = index" class="border-b bg-gray-100">
+                        <td class="text-sm font-medium px-6 py-4 whitespace-nowrap text-left">
+                         
+                        </td>
+                        <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                          {{ booking.count }}
+                        </td>
+                        <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                          {{ 'N/A' }}
+                          <!-- You can add logic for calculating duration based on tour start and end dates -->
+                        </td>
+                        <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-left text-gray-500">
+                          Ksh {{ booking.total_price }}
+                        </td>
+                        <td class="text-sm font-normal px-6 py-4 whitespace-nowrap text-right">
+                          <!-- Add any additional actions you want here -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+</main>

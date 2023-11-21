@@ -28,6 +28,9 @@ export const addNewTour = async (req: Request, res: Response) => {
       destination,
       price,
       imageUrl,
+      start_date,
+      end_date,
+
     } = req.body;
 console.log(req.body);
 
@@ -46,6 +49,9 @@ console.log(req.body);
       .input("destination", mssql.VarChar, destination)
       .input("price", mssql.Int, price)
       .input("imageUrl", mssql.VarChar, imageUrl)
+      .input("start_date", mssql.VarChar, start_date)
+      .input("end_date", mssql.VarChar, end_date)
+    
       .execute("inserttour");
 
     res.json({ message: "Added new Tour..." });
@@ -56,46 +62,7 @@ console.log(req.body);
   }
 };
 
-// export const assignNewTour = async (req: Request, res: Response) => {
-//   try {
-//     const pool = await mssql.connect(sqlConfig);
-//     const { name, description, end_date, assigned_user_email } = req.body;
-//     const { error, value } = UserSchema3.validate(req.body);
-//     if (error) {
-//       return res.json({ error: error.details[0].message });
-//     }
 
-//     await pool
-//       .request()
-//       .input("name", mssql.VarChar, name)
-//       .input("description", mssql.VarChar, description)
-//       .input("end_date", mssql.VarChar, end_date)
-//       .input("assigned_user_email", mssql.VarChar, assigned_user_email)
-//       .execute("assignNewTour");
-
-//     res.json({ message: "Assigned new tour..." });
-//   } catch (error) {
-//     res.json({ error });
-//   }
-// };
-
-// export const deleteTour = async (req: Request, res: Response) => {
-//   try {
-//     const pool = await mssql.connect(sqlConfig);
-//     const tour_id = req.params.tour_id;
-
-//     const deleteTour: tour[] = await (
-//       await pool
-//         .request()
-//         .input("tour_id", mssql.VarChar, tour_id)
-//         .execute("deleteTour")
-//     ).recordset;
-
-//     res.json({ message: "Deleted tour..." });
-//   } catch (error) {
-//     res.json({ error });
-//   }
-// };
 
 export const getAllTours = async (req: Request, res: Response) => {
   try {
@@ -111,38 +78,60 @@ export const getAllTours = async (req: Request, res: Response) => {
   }
 };
 
-// export const getTour = async (req: Request, res: Response) => {
-//   try {
-//     const pool = await mssql.connect(sqlConfig);
-//     const assigned_user_email = req.params.email;
+export const deleteTour = async (req: Request, res: Response) => {
+  try {
+    const { tour_id } = req.params;
+    console.log(req.params);
+    
 
-//     const getTour: Tour[] = await (
-//       await pool
-//         .request()
-//         .input("assigned_user_email", mssql.VarChar, assigned_user_email)
-//         .execute("getTour")
-//     ).recordset;
+    const pool = await mssql.connect(sqlConfig);
 
-//     return res.json(getTour);
-//   } catch (error) {
-//     res.json({ error });
-//   }
-// };
+    await pool
+      .request()
+      .input("tour_id", mssql.VarChar, tour_id)
+      .execute("deleteTour");
 
-// export const completeTours = async (req: Request, res: Response) => {
-//   try {
-//     const pool = await mssql.connect(sqlConfig);
-//     const tour_id = req.params.tour_id;
+    res.json({ message: "Tour deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+export const updateTour = async (req: Request, res: Response) => {
+  try {
+    const { tour_id } = req.params;
+    const {
+      title,
+      description,
+      destination,
+      price,
+      imageUrl,
+      start_date,
+      end_date,
+    } = req.body;
+    console.log(req.body);
+    
 
-//     const ctour: Tour[] = await (
-//       await pool
-//         .request()
-//         .input("tour_id", mssql.VarChar, tour_id)
-//         .execute("completeTour")
-//     ).recordset;
+    const pool = await mssql.connect(sqlConfig);
 
-//     res.json(ctour);
-//   } catch (error) {
-//     res.json({ error });
-//   }
-// };
+    await pool
+      .request()
+      .input("tour_id", tour_id)
+      .input("title", title)
+      .input("description", description)
+      .input("destination", destination)
+      .input("price", price)
+      .input("imageUrl", imageUrl)
+      .input("start_date", start_date)
+      .input("end_date", end_date)
+      .execute("updateTour");
+
+    res.json({ message: "Tour updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+
